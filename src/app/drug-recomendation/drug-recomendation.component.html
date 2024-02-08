@@ -1,0 +1,50 @@
+<!-- Add [(ngModel)] to bind form controls to the properties of formData -->
+<div class="flex justify-center items-center h-screen bg-gray-100">
+  <div class="bg-white p-8 rounded shadow-md max-w-md w-full">
+    <h2 class="text-2xl font-semibold mb-4">Disease Selector</h2>
+
+    <form (ngSubmit)="recomend()">
+      <div class="mb-4">
+        <label for="disease" class="block text-gray-700 text-sm font-bold mb-2">Choose a Disease</label>
+        <select id="disease" class="w-full p-2 border rounded" [(ngModel)]="formData.disease" name="disease">
+          <option value="acne">Acne</option>
+          <option value="hepatitis_b">Hepatitis B</option>
+          <option value="fungal_infection">Fungal Infection</option>
+          <option value="allergy">Allergy</option>
+          <option value="diabetes">Diabetes</option>
+          <option value="malaria">Malaria</option>
+          <option value="migraine">Migraine</option>
+          <option value="urinary_tract_infection">
+            Urinary Tract Infection
+          </option>
+        </select>
+      </div>
+
+      <div class="mb-4">
+        <label for="gender" class="block text-gray-700 text-sm font-bold mb-2">Select Gender</label>
+        <div class="flex items-center">
+          <input type="radio" id="male" name="gender" value="male" class="mr-2" [(ngModel)]="formData.gender" />
+          <label for="male" class="text-sm">Male</label>
+          <input type="radio" id="female" name="gender" value="female" class="ml-4 mr-2"
+            [(ngModel)]="formData.gender" />
+          <label for="female" class="text-sm">Female</label>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label for="age" class="block text-gray-700 text-sm font-bold mb-2">Enter Age</label>
+        <input type="number" id="age" class="w-full p-2 border rounded" placeholder="Enter your age"
+          [(ngModel)]="formData.age" name="age" />
+      </div>
+
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+        Submit
+      </button>
+    </form>
+
+    <h2 class="text-2xl font-semibold mt-4">Recomendation</h2>
+    <div *ngIf="predictedDrug" class="mb-4">
+      {{ predictedDrug }}
+    </div>
+  </div>
+</div>

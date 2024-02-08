@@ -1,0 +1,33 @@
+<!-- diagnosis-form.component.html -->
+
+<div class="max-w-md mx-auto bg-white mt-16 p-6 rounded shadow-md">
+  <!-- Symptom Selection Fields -->
+  <div *ngFor="let i of [0, 1, 2, 3, 4]" class="mb-4">
+    <label for="symptom{{ i + 1 }}" class="block text-gray-700 font-bold mb-2"
+      >Symptom {{ i + 1 }}</label
+    >
+    <select
+      id="symptom{{ i + 1 }}"
+      [(ngModel)]="symptoms[i]"
+      class="w-full p-2 border rounded"
+    >
+      <option *ngFor="let option of symptoms" [value]="option">
+        {{ option }}
+      </option>
+    </select>
+  </div>
+
+  <!-- "Give My Diagnosis" Button -->
+  <button
+    (click)="submitForm()"
+    class="bg-green-500 text-white font-bold py-2 px-4 rounded"
+  >
+    Give My Diagnosis
+  </button>
+  <div class="flex flex-row justify-center mb-4">
+    <app-diagnosis-result
+      class="mt-2"
+      diagnosisResult="{{ diagnosisResult }}"
+    ></app-diagnosis-result>
+  </div>
+</div>
